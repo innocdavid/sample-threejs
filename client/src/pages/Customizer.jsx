@@ -48,66 +48,66 @@ const Customizer = () => {
     }
   }
 
-  const handleSubmit = async (type) => {
-    if(!prompt) return alert("Please enter a prompt");
+  // const handleSubmit = async (type) => {
+  //   if(!prompt) return alert("Please enter a prompt");
 
-    try {
-      setGeneratingImg(true);
+  //   try {
+  //     setGeneratingImg(true);
 
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          prompt,
-        })
-      })
+  //     const response = await fetch('http://localhost:8080/api/v1/dalle', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         prompt,
+  //       })
+  //     })
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      handleDecals(type, `data:image/png;base64,${data.photo}`)
-    } catch (error) {
-      alert(error)
-    } finally {
-      setGeneratingImg(false);
-      setActiveEditorTab("");
-    }
-  }
+  //     handleDecals(type, `data:image/png;base64,${data.photo}`)
+  //   } catch (error) {
+  //     alert(error)
+  //   } finally {
+  //     setGeneratingImg(false);
+  //     setActiveEditorTab("");
+  //   }
+  // }
 
-  const handleDecals = (type, result) => {
-    const decalType = DecalTypes[type];
+  // const handleDecals = (type, result) => {
+  //   const decalType = DecalTypes[type];
 
-    state[decalType.stateProperty] = result;
+  //   state[decalType.stateProperty] = result;
 
-    if(!activeFilterTab[decalType.filterTab]) {
-      handleActiveFilterTab(decalType.filterTab)
-    }
-  }
+  //   if(!activeFilterTab[decalType.filterTab]) {
+  //     handleActiveFilterTab(decalType.filterTab)
+  //   }
+  // }
 
-  const handleActiveFilterTab = (tabName) => {
-    switch (tabName) {
-      case "logoShirt":
-          state.isLogoTexture = !activeFilterTab[tabName];
-        break;
-      case "stylishShirt":
-          state.isFullTexture = !activeFilterTab[tabName];
-        break;
-      default:
-        state.isLogoTexture = true;
-        state.isFullTexture = false;
-        break;
-    }
+  // const handleActiveFilterTab = (tabName) => {
+  //   // switch (tabName) {
+  //   //   case "logoShirt":
+  //   //       state.isLogoTexture = !activeFilterTab[tabName];
+  //   //     break;
+  //   //   case "stylishShirt":
+  //   //       state.isFullTexture = !activeFilterTab[tabName];
+  //   //     break;
+  //   //   default:
+  //   //     state.isLogoTexture = true;
+  //   //     state.isFullTexture = false;
+  //   //     break;
+  //   // }
 
-    // after setting the state, activeFilterTab is updated
+  //   // after setting the state, activeFilterTab is updated
 
-    setActiveFilterTab((prevState) => {
-      return {
-        ...prevState,
-        [tabName]: !prevState[tabName]
-      }
-    })
-  }
+  //   setActiveFilterTab((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       [tabName]: !prevState[tabName]
+  //     }
+  //   })
+  // }
 
   const readFile = (type) => {
     reader(file)
@@ -153,7 +153,7 @@ const Customizer = () => {
             />
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             className='filtertabs-container'
             {...slideAnimation("up")}
           >
@@ -166,7 +166,7 @@ const Customizer = () => {
                 handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
-          </motion.div>
+          </motion.div> */}
         </>
       )}
     </AnimatePresence>

@@ -20,7 +20,7 @@ const Tab = ({ tab, isFilterTab, isActiveTab, handleClick }) => {
       <img 
         src={tab.icon}
         alt={tab.name}
-        className={`${isFilterTab ? 'w-2/3 h-2/3' : 'w-11/12 h-11/12 object-contain'}`}
+        className={`${isFilterTab ? 'w-2/3 h-2/3' : 'w-11/12 h-11/12 object-contain'} rounded-full`}
       />
     </div>
   )
